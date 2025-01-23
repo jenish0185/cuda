@@ -1,13 +1,19 @@
-all: EncryptSHA512 CrackLc3 CrackAZ99
+CFLAGS = -Wno-deprecated-gpu-targets
+CC = nvcc
 
-EncryptSHA512: EncryptSHA512.c
-	cc -o EncryptSHA512 EncryptSHA512.c -lcrypt
+all: dq00 dq01 dq02 dq03 
 
-CrackLc3: CrackLc3.c
-	cc -o CrackLc3 CrackLc3.c -lcrypt
+dq00: dq00.cu 
+	$(CC) $(CFLAGS) -o dq00 dq00.cu  
 
-CrackAZ99: CrackAZ99.c
-	cc -o CrackAZ99 CrackAZ99.c -lcrypt
+dq01: dq01.cu 
+	$(CC) $(CFLAGS) -o dq01 dq01.cu  
+
+dq02: dq02.cu 
+	$(CC) $(CFLAGS) -o dq02 dq02.cu 
+
+dq03: dq03.cu 
+	$(CC) $(CFLAGS) -o dq03 dq03.cu 
 
 clean:
-	rm -f a.out *~ EncryptSHA512 CrackLc3 CrackAZ99
+	rm -f dq00 dq01 dq01 dq02 dq03 *~ a.out
